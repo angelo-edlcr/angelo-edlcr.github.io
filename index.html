@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angelo De La Cruz</title>
     
     <!-- stylesheets -->
@@ -40,29 +40,21 @@
         <div></div>
         <div><h2>Loading<br>data...</span></div>
     </div>
-
-    <!-- Cursor change -->
-    <div class="cursor" id="cursor"><div></div></div>
-    <script>
-        var cursor = document.querySelector(".cursor");
-
-        document.addEventListener("mousemove", function(e){
-            var x = e.pageX;
-            var y = e.pageY;
-            cursor.style.top = y + "px";
-            cursor.style.left = x + "px";
-        });
-    </script>
-
-
     <header>
         <nav>
-            <div>
-                <a href="#top">Inicio</a>
-                <a href="#aboutMe">Sobre mi</a>
-                <a href="#portfolio">Portafolio</a>
-                <a href="#cv">CV</a>
-                <a href="#contact">Contacto</a>
+            <div class="toggle" id="toggle">
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="navigation" id="navigation">
+                <a onclick="closeMenu()" href="#top">Inicio</a>
+                <a onclick="closeMenu()" href="#aboutMe">Sobre mi</a>
+                <a onclick="closeMenu()" href="#portfolio">Portafolio</a>
+                <a onclick="closeMenu()" href="#cv">CV</a>
+                <a onclick="closeMenu()" href="#contact">Contacto</a>
             </div>
         </nav>
     </header>
@@ -134,27 +126,23 @@
         </div>
     </main>
 
-    <section class="portfolio" id="portfolio">
+        <div id="portfolio"></div>
+    <section class="portfolio">
         <h2>Portafolio</h2>
         <div class="container">
             <div class="swiper-container mySwiper">
                 <div class="swiper-wrapper">
-                    <a class="swiper-slide">
-                        <img alt="">
-                        <div class="languages">
-                        </div>
-                    </a>
-                    <a class="swiper-slide" href="https://angelo-edlcr.me/MechaKey/" target="_blank">
-                        <img src="img/previews/mechakey.png" alt="">
+                    <div class="swiper-slide" target="_blank">
+                        <a href="https://angelo-edlcr.me/MechaKey/"><img src="img/previews/mechakey.png" alt=""></a>
                         <h3>MechaKey</h3>
                         <div class="languages">
                             <i title="HTML 5" class="devicon-html5-plain-wordmark colored"></i>
                             <i class="devicon-css3-plain-wordmark colored"></i>
                             <i class="devicon-javascript-plain colored"></i>
                         </div>
-                    </a>
-                    <a class="swiper-slide" href="http://cloudcode.live" target="_blank">
-                        <img src="img/previews/cloudcode.png" alt="">
+                    </div>
+                    <div class="swiper-slide" target="_blank">
+                        <a href="http://cloudcode.live"><img src="img/previews/cloudcode.png" alt=""></a>
                         <h3>CLOUDCODE</h3>
                         <div class="languages">
                             <i class="devicon-html5-plain-wordmark colored"></i>
@@ -163,20 +151,26 @@
                             <i class="devicon-php-plain colored"></i>
                             <i class="devicon-mysql-plain-wordmark colored"></i>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
             <!-- Initialize Swiper -->
             <script>
                 var swiper = new Swiper(".mySwiper", {
-                    slidesPerView: 3,
-                    slidesPerColumn: 2,
-                    spaceBetween: 30,
+                    // slidesPerView: auto,
+                    // slidesPerColumn: 2,
+                    spaceBetween: 60,
                     grabCursor: true,
                     pagination: {
                         el: ".swiper-pagination",
                         clickable: true
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
                     }
                 });
             </script>
@@ -200,7 +194,7 @@
 
     <section class="contact" id="contact">
         <div class="container">
-            <h2>CONTACTOS</h2>
+            <h2>CONTACTO</h2>
             <div>
                 <a href="mailto:angelo.edlcr@gmail.com, angeloe2811@gmail.com"><ion-icon name="mail-outline" style="--bgColor: orange;"></ion-icon></a>
                 <a href="https://www.linkedin.com/in/angelo-de-la-cruz-24a2121b3/"><ion-icon name="logo-linkedin" style="--bgColor: #0a66c2;"></ion-icon></a>
@@ -211,4 +205,14 @@
     </section>
 </body>
 <script src="path-to-the-file/splide.min.js"></script>
+<script>
+    document.getElementById("toggle").addEventListener("click", function() {
+        document.getElementById("toggle").classList.toggle("open");
+        document.getElementById("navigation").classList.toggle("open");
+    });
+    function closeMenu() {
+        document.getElementById("toggle").classList.remove("open");
+        document.getElementById("navigation").classList.remove("open");
+    }
+</script>
 </html>
